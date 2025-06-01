@@ -4,3 +4,8 @@ def get_book_text(filepath: str) -> str:
         content = f.read()
 
     return content
+
+def main():
+    print(get_book_text("books/frankenstein.txt"))
+
+main()
