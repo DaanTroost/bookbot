@@ -1,4 +1,5 @@
 import stats
+import sys
 
 def get_book_text(filepath: str) -> str: 
     content = ""
@@ -7,8 +8,12 @@ def get_book_text(filepath: str) -> str:
 
     return content
 
-def main():
-    book_content = get_book_text("books/frankenstein.txt")
+def main(args):
+    if len(args) < 2:
+        print ("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    book_path = sys.argv[1]
+    book_content = get_book_text(book_path)
     num_words = stats.get_num_words(book_content)
 
     print("============ BOOKBOT ============")
@@ -24,4 +29,4 @@ def main():
             print(f'{entry["char"]}: {entry["num"]}')
     print("============= END ===============")
 
-main()
+main(sys.argv)
